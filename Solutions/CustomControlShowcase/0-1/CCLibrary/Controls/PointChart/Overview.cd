@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CCLibrary.Controls.PointChart.PointChart">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEYQAAEEABAACAAHDAAAAECAQAMAAAIANAQAAQCACA=</HashCode>
+      <FileName>Controls\PointChart\PointChart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCLibrary.Controls.PointChart.PointChartItem">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="CCLibrary.Controls.PointChart.PointChartItem.UnitPointChangedEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\PointChart\PointChartItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAMAAAAAAAAAAAACAAYAAAAACIAAAQAAAAA=</HashCode>
+      <FileName>Controls\PointChart\PointChartItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="CCDevShowcase.View.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:attachedProperties="clr-namespace:CCDevStyling.AttachedProperties;assembly=CCDevStyling"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             DataContext="{Binding SampleViewModel}"
+             d:DataContext="{Binding SampleViewModel,
+                                     Source={StaticResource ViewModelLocator}}"
+             d:DesignHeight="800"
+             d:DesignWidth="1280"
+             mc:Ignorable="d">
+    <!--
+        d:DataContext="{Binding SampleViewModel,
+        Source={StaticResource ViewModelLocator}}"
+    -->
+    <UserControl.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding ClearSearchCommand}" />
+    </UserControl.InputBindings>
+
+    <UserControl.Resources>
+        <Style x:Key="MyPointChartItemStyle" TargetType="PointChartItem" BasedOn="{StaticResource PointChartItemStyle}">
+            <Setter Property="XUnitValue" Value="{Binding X}" />
+            <Setter Property="YUnitValue" Value="{Binding Y}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+            <Setter Property="attachedProperties:AttachedProperties.IsSearchResult" Value="{Binding IsSearchResult}" />
+        </Style>
+
+        <Style x:Key="MySecondaryPointChartItemStyle" TargetType="PointChartItem" BasedOn="{StaticResource SecondaryPointChartItemStyle}">
+            <Setter Property="XUnitValue" Value="{Binding X}" />
+            <Setter Property="YUnitValue" Value="{Binding Y}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+            <Setter Property="attachedProperties:AttachedProperties.IsSearchResult" Value="{Binding IsSearchResult}" />
+        </Style>
+
+        <Style x:Key="MyListBoxItemStyle" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}">
+            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+            <Setter Property="attachedProperties:AttachedProperties.IsSearchResult" Value="{Binding IsSearchResult}" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource HeaderBrush}" />
+
+        <Grid x:Name="User" Background="{StaticResource UserOverlayBrush}">
+            <StackPanel Margin="20 10" Orientation="Horizontal">
+                <ContentControl Width="70"
+                                Height="70"
+                                Style="{StaticResource CircleCutOutContentControlStyle}">
+                    <ContentControl.Content>
+                        <Image Source="{StaticResource UserAsset}" />
+                    </ContentControl.Content>
+                </ContentControl>
+                <TextBlock Margin="20 0 0 0"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource UserTextBlockStyle}">
+                    <Run Text="André Lanninger" />
+                    <LineBreak />
+                    <Run FontSize="{StaticResource Layer4FontSize}" Text="UIDeveloper" />
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="Header"
+              Grid.Column="1"
+              Background="{StaticResource HeaderOverlayBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="205" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="20" Orientation="Horizontal">
+                <Image Source="{StaticResource XWhiteIcon}" Stretch="Uniform" />
+                <TextBlock Margin="20 0 0 0"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource HeaderTextBlockStyle}">
+                    <Run Text="Datagraph " />
+                    <Run Text="{Binding Points.Count, Mode=OneWay}" />
+                    <Run FontSize="{StaticResource Layer3FontSize}" Text="Circles" />
+                </TextBlock>
+            </StackPanel>
+            <Border Grid.Column="1" Margin="0 0 20 0">
+                <Border.Resources>
+                    <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
+                        <Setter Property="Margin" Value="20 20 0 20" />
+                        <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    </Style>
+                </Border.Resources>
+                <ToggleButton x:Name="SetPointChartItemStyleButton" IsChecked="false">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="30"
+                               Height="30"
+                               Source="{StaticResource MaestroWhiteIcon}" />
+                        <TextBlock Margin="10 0 0 0"
+                                   VerticalAlignment="Center"
+                                   Text="ChangeStyle" />
+                    </StackPanel>
+                </ToggleButton>
+            </Border>
+        </Grid>
+
+        <Border x:Name="PointList"
+                Grid.Row="1"
+                Background="{StaticResource Blue01Brush}">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <SearchTextBox x:Name="SearchTextBox"
+                               Margin="0 0 0 10"
+                               Text="{Binding SearchString,
+                                              UpdateSourceTrigger=PropertyChanged}"
+                               Watermark="Search Points" />
+
+                <ListBox Grid.Row="1"
+                         ItemContainerStyle="{StaticResource MyListBoxItemStyle}"
+                         ItemTemplate="{StaticResource PointListDataTemplate}"
+                         ItemsSource="{Binding Points}"
+                         SelectionMode="Extended"
+                         Style="{StaticResource ListBoxStyle}" />
+            </Grid>
+        </Border>
+
+        <Grid x:Name="Chart"
+              Grid.Row="1"
+              Grid.Column="1">
+            <PointChart x:Name="MyPointChart"
+                        Panel.ZIndex="100"
+                        ItemContainerStyle="{StaticResource MyPointChartItemStyle}"
+                        ItemsSource="{Binding Points}"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                        SelectionMode="Extended">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChangedInteractionCommand}" CommandParameter="{Binding SelectedItem, ElementName=MyPointChart}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </PointChart>
+        </Grid>
+    </Grid>
+
+</UserControl>

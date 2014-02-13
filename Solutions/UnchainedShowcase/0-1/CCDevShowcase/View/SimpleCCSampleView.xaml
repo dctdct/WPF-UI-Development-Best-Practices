@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="CCDevShowcase.View.SimpleCCSampleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel MinWidth="200"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource WatermarkAttachedTextBoxStyle}">
+                    <Setter Property="Margin" Value="0 5" />
+                </Style>
+                <Style TargetType="Slider">
+                    <Setter Property="Margin" Value="0 5" />
+                </Style>
+            </StackPanel.Resources>
+            <HighlightableTextBlock x:Name="MyHighlightableTextBlock"
+                                    HighlightString="{Binding Text,
+                                                              ElementName=SearchTextBox}"
+                                    Text="{Binding Text,
+                                                   ElementName=TextTextBox}" />
+
+            <TextBox x:Name="TextTextBox" AttachedProperties.Watermark="TextBoxAttached" />
+            <SearchTextBox x:Name="SearchTextBox" Watermark="SearchTextBox" />
+
+            <TextBlock Margin="0 20 0 0" Text="CircularProgressBar" />
+            <CircularProgressBar x:Name="CircularProgressBar"
+                                 Margin="0 5 0 0"
+                                 Maximum="100"
+                                 Minimum="0"
+                                 Value="{Binding Value,
+                                                 ElementName=ValueSlider}" />
+            <Slider x:Name="ValueSlider"
+                    Maximum="100"
+                    Minimum="0" />
+
+            <TextBlock Margin="0 20 0 0" Text="ProgressBar with converter" />
+            <ProgressBar Maximum="100"
+                         Minimum="0"
+                         Value="{Binding Value,
+                                         ElementName=ValueSlider}" />
+
+            <TextBlock Margin="0 20 0 0" Text="Slider as Numeric Up Down" />
+            <Slider x:Name="NumericUpDownSlider"
+                    Maximum="100"
+                    Minimum="0"
+					SmallChange="{Binding Text, ElementName=SmallChangeText}"
+					TickFrequency="{Binding Text, ElementName=TickText}"
+                    Style="{StaticResource SliderStyle}" />
+					
+            <TextBlock Text="{Binding Value, ElementName=NumericUpDownSlider}" />
+			
+            <NumericUpDown x:Name="NumericUpDown"
+                    Maximum="100"
+                    Minimum="0"
+					SmallChange="{Binding Text, ElementName=SmallChangeText}"
+					TickFrequency="{Binding Text, ElementName=TickText}"
+                    Style="{StaticResource NumericUpDownStyle}" />
+					
+            <TextBlock Text="{Binding Value, ElementName=NumericUpDown}" />
+			
+            <TextBox x:Name="TickText" Text="1"/>
+            <TextBox x:Name="SmallChangeText" Text="1" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

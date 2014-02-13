@@ -1,0 +1,17 @@
+﻿
+<!--
+    /*
+    * This file has been created by ERGOSIGN GmbH - All rights reserved - http://www.ergosign.de
+    * DO NOT ALTER OR REMOVE  THIS COPYRIGHT NOTICE OR THIS FILE HEADER.
+    *
+    * This file and the code contained in it are subject to the agreed contractual terms and conditions,
+    * in particular with regard to resale and publication.
+    */
+-->
+<SharedResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--  <sys:String x:Key="FilePath">/FilePath</sys:String>  -->
+
+</SharedResourceDictionary>

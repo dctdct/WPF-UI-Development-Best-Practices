@@ -1,0 +1,58 @@
+﻿
+<!--
+    /*
+    * This file has been created by ERGOSIGN GmbH - All rights reserved - http://www.ergosign.de
+    * DO NOT ALTER OR REMOVE  THIS COPYRIGHT NOTICE OR THIS FILE HEADER.
+    *
+    * This file and the code contained in it are subject to the agreed contractual terms and conditions,
+    * in particular with regard to resale and publication.
+    */
+-->
+<SharedResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SharedResourceDictionary.MergedDictionaries>
+        <SharedResourceDictionary Source="/CCDevStyling;component/BitmapGraphics/Icons.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/BitmapGraphics/Assets.xaml" />
+
+        <SharedResourceDictionary Source="/CCDevStyling;component/VectorGraphics/Icons.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/VectorGraphics/Shapes.xaml" />
+
+        <SharedResourceDictionary Source="/CCDevStyling;component/Colors/Colors.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Colors/Brushes.xaml" />
+
+        <SharedResourceDictionary Source="/CCDevStyling;component/Settings/Settings.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Settings/Typography.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Converters/Converter.xaml" />
+
+        <SharedResourceDictionary Source="/CCDevStyling;component/DataTemplates/DataTemplates.xaml" />
+
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/TextBlock.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/Button.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/ToggleButton.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/TextBox.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/ProgressBar.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/Border.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/ContentControl.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/ListBox.xaml" />
+		<SharedResourceDictionary Source="/CCDevStyling;component/Styles/Slider.xaml"/>
+
+        <!--  CCs  -->
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/CustomControls/PointChart.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/CustomControls/SearchTextBox.xaml" />
+        <SharedResourceDictionary Source="/CCDevStyling;component/Styles/CustomControls/CircularProgressBar.xaml" />
+    </SharedResourceDictionary.MergedDictionaries>
+
+    <!--  Default Style Definitions  -->
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
+    <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}" />
+    <Style TargetType="ProgressBar" BasedOn="{StaticResource CircularConverterProgressBarStyle}" />
+    <Style TargetType="TextBox" BasedOn="{StaticResource WatermarkAttachedTextBoxStyle}" />
+    <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxStyle}" />
+
+    <!--  CC Style Definitions  -->
+    <Style TargetType="PointChartItem" BasedOn="{StaticResource PointChartItemStyle}" />
+    <Style TargetType="PointChart" BasedOn="{StaticResource PointChartStyle}" />
+    <Style TargetType="SearchTextBox" BasedOn="{StaticResource SearchTextBoxStyle}" />
+    <Style TargetType="CircularProgressBar" BasedOn="{StaticResource CircularProgressBarStyle}" />
+
+</SharedResourceDictionary>
